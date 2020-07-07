@@ -22,6 +22,7 @@
     // Do any additional setup after loading the view.
 }
 
+// user can sign up
 - (IBAction)onSignUp:(id)sender {
     // check to make sure fields are not empty
     if ([self.usernameField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""]) {
@@ -60,6 +61,29 @@
             }
         }];
     }
+}
+
+// user can login
+- (IBAction)onLogin:(id)sender {
+    NSString *username = self.usernameField.text;
+    NSString *password = self.passwordField.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        
+        if (error != nil) {
+            UIAlertController *loginAlert = [self createAlert:error.localizedDescription title:@"Error Logging In"];
+            
+            // show the alert controller
+            [self presentViewController: loginAlert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
+        } else {
+            NSLog(@"User logged in successfully");
+            
+            // display view controller that needs to shown after successful login
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        }
+    }];
 }
 
 // given an error description and title, return an alert with cancel and ok buttons
