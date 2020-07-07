@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		7B4F4F6D4AE1DB1DCB8AE693 /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC30BF497231B110C8C49FFB /* Pods_InstaTests.framework */; };
 		C868F67224B3C06500B72ED8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F67124B3C06500B72ED8 /* AppDelegate.m */; };
 		C868F67524B3C06500B72ED8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F67424B3C06500B72ED8 /* SceneDelegate.m */; };
-		C868F67824B3C06500B72ED8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F67724B3C06500B72ED8 /* ViewController.m */; };
 		C868F67B24B3C06500B72ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C868F67924B3C06500B72ED8 /* Main.storyboard */; };
 		C868F67D24B3C06600B72ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C868F67C24B3C06600B72ED8 /* Assets.xcassets */; };
 		C868F68024B3C06600B72ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C868F67E24B3C06600B72ED8 /* LaunchScreen.storyboard */; };
@@ -21,6 +20,7 @@
 		C868F69824B3C06600B72ED8 /* InstaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F69724B3C06600B72ED8 /* InstaUITests.m */; };
 		C868F6A624B3C21500B72ED8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C868F6A524B3C21500B72ED8 /* .gitignore */; };
 		C868F6A824B3D44C00B72ED8 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = C868F6A724B3D44C00B72ED8 /* .gitattributes */; };
+		C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6AB24B4152000B72ED8 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +53,6 @@
 		C868F67124B3C06500B72ED8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C868F67324B3C06500B72ED8 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		C868F67424B3C06500B72ED8 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		C868F67624B3C06500B72ED8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C868F67724B3C06500B72ED8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C868F67A24B3C06500B72ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C868F67C24B3C06600B72ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C868F67F24B3C06600B72ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +66,8 @@
 		C868F69924B3C06600B72ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C868F6A524B3C21500B72ED8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C868F6A724B3D44C00B72ED8 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		C868F6AA24B4152000B72ED8 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C868F6AB24B4152000B72ED8 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EC30BF497231B110C8C49FFB /* Pods_InstaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC743AB7529147FEB40D7E2 /* Pods-Insta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.release.xcconfig"; path = "Target Support Files/Pods-Insta/Pods-Insta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +120,6 @@
 				722143E34D01323FB78DC190 /* Pods-InstaTests.debug.xcconfig */,
 				B06A164938030F246A1DA654 /* Pods-InstaTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -151,12 +150,11 @@
 		C868F66F24B3C06500B72ED8 /* Insta */ = {
 			isa = PBXGroup;
 			children = (
+				C868F6A924B414FB00B72ED8 /* View Controllers */,
 				C868F67024B3C06500B72ED8 /* AppDelegate.h */,
 				C868F67124B3C06500B72ED8 /* AppDelegate.m */,
 				C868F67324B3C06500B72ED8 /* SceneDelegate.h */,
 				C868F67424B3C06500B72ED8 /* SceneDelegate.m */,
-				C868F67624B3C06500B72ED8 /* ViewController.h */,
-				C868F67724B3C06500B72ED8 /* ViewController.m */,
 				C868F67924B3C06500B72ED8 /* Main.storyboard */,
 				C868F67C24B3C06600B72ED8 /* Assets.xcassets */,
 				C868F67E24B3C06600B72ED8 /* LaunchScreen.storyboard */,
@@ -182,6 +180,15 @@
 				C868F69924B3C06600B72ED8 /* Info.plist */,
 			);
 			path = InstaUITests;
+			sourceTree = "<group>";
+		};
+		C868F6A924B414FB00B72ED8 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C868F6AA24B4152000B72ED8 /* LoginViewController.h */,
+				C868F6AB24B4152000B72ED8 /* LoginViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,7 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C868F67824B3C06500B72ED8 /* ViewController.m in Sources */,
+				C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */,
 				C868F67224B3C06500B72ED8 /* AppDelegate.m in Sources */,
 				C868F68324B3C06600B72ED8 /* main.m in Sources */,
 				C868F67524B3C06500B72ED8 /* SceneDelegate.m in Sources */,

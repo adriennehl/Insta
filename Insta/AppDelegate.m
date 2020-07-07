@@ -21,7 +21,7 @@
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         
         configuration.applicationId = @"AL_INSTA_APP";
-        configuration.server = @"https://al-insta-app.herokuapp.com/";
+        configuration.server = @"https://al-insta-app.herokuapp.com/parse";
     }];
     
     [Parse initializeWithConfiguration:config];
