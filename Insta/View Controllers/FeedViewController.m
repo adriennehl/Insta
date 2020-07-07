@@ -16,6 +16,7 @@
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *postsTableView;
 @property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation FeedViewController
@@ -29,6 +30,12 @@
     // fetch tweets
     [self fetchPosts];
     
+    // create an instance of UIRefreshControl
+       self.refreshControl = [[UIRefreshControl alloc] init];
+    // call fetchPosts on refresh
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    // add refresh to table view
+    [self.postsTableView insertSubview:self.refreshControl atIndex:0];
 }
 
 // fetch posts method
@@ -47,6 +54,7 @@
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
