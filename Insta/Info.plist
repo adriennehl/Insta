@@ -64,5 +64,10 @@
 	<string>Need library access to upload images</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Need camera access to take pictures</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>

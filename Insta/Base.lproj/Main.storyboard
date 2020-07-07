@@ -71,7 +71,66 @@
                     <view key="view" contentMode="scaleToFill" id="Cvt-Sl-7ow">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KIt-db-ile">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="383" id="uIq-eu-V4d" customClass="PostCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="383"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uIq-eu-V4d" id="CTa-ul-1sk">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="383"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EqY-Ym-QqY" customClass="PFImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="350" id="1Xq-S5-DM1"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frr-ta-tEn">
+                                                    <rect key="frame" x="8" y="358" width="43.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOl-Et-5y3">
+                                                    <rect key="frame" x="59.5" y="358" width="42" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hOl-Et-5y3" firstAttribute="top" secondItem="EqY-Ym-QqY" secondAttribute="bottom" constant="8" id="96j-PJ-Zt9"/>
+                                                <constraint firstAttribute="trailing" secondItem="EqY-Ym-QqY" secondAttribute="trailing" id="DzO-bb-vbf"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hOl-Et-5y3" secondAttribute="trailing" constant="8" id="Glj-PB-uQz"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hOl-Et-5y3" secondAttribute="bottom" constant="8" id="HKR-ZX-j3X"/>
+                                                <constraint firstItem="hOl-Et-5y3" firstAttribute="leading" secondItem="frr-ta-tEn" secondAttribute="trailing" constant="8" id="TRN-rk-gHx"/>
+                                                <constraint firstItem="EqY-Ym-QqY" firstAttribute="top" secondItem="CTa-ul-1sk" secondAttribute="top" id="ag1-l1-RTv"/>
+                                                <constraint firstItem="frr-ta-tEn" firstAttribute="top" secondItem="EqY-Ym-QqY" secondAttribute="bottom" constant="8" id="am7-KO-im3"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="frr-ta-tEn" secondAttribute="bottom" constant="8" id="cmb-lW-x65"/>
+                                                <constraint firstItem="EqY-Ym-QqY" firstAttribute="leading" secondItem="CTa-ul-1sk" secondAttribute="leading" id="dZ4-E5-Wrr"/>
+                                                <constraint firstItem="frr-ta-tEn" firstAttribute="leading" secondItem="CTa-ul-1sk" secondAttribute="leading" constant="8" id="p5G-Uu-YDF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="hOl-Et-5y3" id="jJI-vU-nA9"/>
+                                            <outlet property="postView" destination="EqY-Ym-QqY" id="a1T-Df-Z2Y"/>
+                                            <outlet property="usernameLabel" destination="frr-ta-tEn" id="7Sg-Ls-2MH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KIt-db-ile" firstAttribute="top" secondItem="dqC-qo-4NT" secondAttribute="top" id="26B-2R-f7M"/>
+                            <constraint firstItem="KIt-db-ile" firstAttribute="leading" secondItem="dqC-qo-4NT" secondAttribute="leading" id="RLw-jn-otg"/>
+                            <constraint firstItem="KIt-db-ile" firstAttribute="trailing" secondItem="dqC-qo-4NT" secondAttribute="trailing" id="Zls-Zr-paY"/>
+                            <constraint firstAttribute="bottom" secondItem="KIt-db-ile" secondAttribute="bottom" id="yZM-cB-gm5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dqC-qo-4NT"/>
                     </view>
                     <navigationItem key="navigationItem" id="60N-UK-Z4m">
@@ -86,6 +145,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="postsTableView" destination="KIt-db-ile" id="UVB-B1-NRf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vp-fE-J6x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
