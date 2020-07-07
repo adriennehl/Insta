@@ -10,6 +10,7 @@
 		199072282C8CF52D0546908B /* Pods_Insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D024B7E2F35B5700C2B621 /* Pods_Insta.framework */; };
 		5D6E679DE1EE1EDE7125882B /* Pods_Insta_InstaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FD5A3AE6C1D05F7215A003 /* Pods_Insta_InstaUITests.framework */; };
 		7B4F4F6D4AE1DB1DCB8AE693 /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC30BF497231B110C8C49FFB /* Pods_InstaTests.framework */; };
+		C807DD4F24B520470020137E /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = C807DD4E24B520470020137E /* Post.m */; };
 		C868F67224B3C06500B72ED8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F67124B3C06500B72ED8 /* AppDelegate.m */; };
 		C868F67524B3C06500B72ED8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F67424B3C06500B72ED8 /* SceneDelegate.m */; };
 		C868F67B24B3C06500B72ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C868F67924B3C06500B72ED8 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		C868F6A824B3D44C00B72ED8 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = C868F6A724B3D44C00B72ED8 /* .gitattributes */; };
 		C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6AB24B4152000B72ED8 /* LoginViewController.m */; };
 		C868F6AF24B41FFD00B72ED8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */; };
+		C868F6B224B42A9D00B72ED8 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		8DBB9CF414DB690AF69B9CCA /* Pods-Insta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.debug.xcconfig"; path = "Target Support Files/Pods-Insta/Pods-Insta.debug.xcconfig"; sourceTree = "<group>"; };
 		A9D024B7E2F35B5700C2B621 /* Pods_Insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06A164938030F246A1DA654 /* Pods-InstaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaTests.release.xcconfig"; path = "Target Support Files/Pods-InstaTests/Pods-InstaTests.release.xcconfig"; sourceTree = "<group>"; };
+		C807DD4D24B520470020137E /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		C807DD4E24B520470020137E /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		C868F66D24B3C06500B72ED8 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C868F67024B3C06500B72ED8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C868F67124B3C06500B72ED8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		C868F6AB24B4152000B72ED8 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C868F6AD24B41FFD00B72ED8 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		C868F6B024B42A9D00B72ED8 /* CreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePostViewController.h; sourceTree = "<group>"; };
+		C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatePostViewController.m; sourceTree = "<group>"; };
 		EC30BF497231B110C8C49FFB /* Pods_InstaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC743AB7529147FEB40D7E2 /* Pods-Insta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.release.xcconfig"; path = "Target Support Files/Pods-Insta/Pods-Insta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +169,8 @@
 				C868F67E24B3C06600B72ED8 /* LaunchScreen.storyboard */,
 				C868F68124B3C06600B72ED8 /* Info.plist */,
 				C868F68224B3C06600B72ED8 /* main.m */,
+				C807DD4D24B520470020137E /* Post.h */,
+				C807DD4E24B520470020137E /* Post.m */,
 			);
 			path = Insta;
 			sourceTree = "<group>";
@@ -192,6 +200,8 @@
 				C868F6AB24B4152000B72ED8 /* LoginViewController.m */,
 				C868F6AD24B41FFD00B72ED8 /* FeedViewController.h */,
 				C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */,
+				C868F6B024B42A9D00B72ED8 /* CreatePostViewController.h */,
+				C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -436,11 +446,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C868F6B224B42A9D00B72ED8 /* CreatePostViewController.m in Sources */,
 				C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */,
 				C868F6AF24B41FFD00B72ED8 /* FeedViewController.m in Sources */,
 				C868F67224B3C06500B72ED8 /* AppDelegate.m in Sources */,
 				C868F68324B3C06600B72ED8 /* main.m in Sources */,
 				C868F67524B3C06500B72ED8 /* SceneDelegate.m in Sources */,
+				C807DD4F24B520470020137E /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37C932B2T4;
 				INFOPLIST_FILE = Insta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -628,6 +641,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37C932B2T4;
 				INFOPLIST_FILE = Insta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

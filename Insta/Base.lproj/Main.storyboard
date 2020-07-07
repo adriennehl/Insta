@@ -75,9 +75,14 @@
                         <viewLayoutGuide key="safeArea" id="dqC-qo-4NT"/>
                     </view>
                     <navigationItem key="navigationItem" id="60N-UK-Z4m">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="pr4-TB-ECY">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="pr4-TB-ECY">
                             <connections>
                                 <action selector="onLogout:" destination="ctZ-b3-dwX" id="JKX-KO-UlJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Compose" image="insta_camera_btn" id="RbJ-mN-L7n">
+                            <connections>
+                                <segue destination="Hef-21-iEc" kind="presentation" id="E01-1l-nLy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -85,6 +90,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vp-fE-J6x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1810.144927536232" y="-93.080357142857139"/>
+        </scene>
+        <!--Compose-->
+        <scene sceneID="svc-4X-qlz">
+            <objects>
+                <viewController title="Compose" id="HkY-3N-KJu" customClass="CreatePostViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EOo-Mo-axa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="pMh-OL-Pet">
+                                <rect key="frame" x="20" y="80" width="137" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hcl-Gk-QkK" appends="YES" id="yau-df-RNy"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ve-5Y-Sw0">
+                                <rect key="frame" x="188" y="80" width="206" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ESr-na-4xB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7uD-dJ-RBr">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="VHx-03-2Bh">
+                            <connections>
+                                <action selector="onClose:" destination="HkY-3N-KJu" id="JI0-Pw-iyH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="acH-tg-c4v">
+                            <connections>
+                                <action selector="onSave:" destination="HkY-3N-KJu" id="laQ-Dp-6Nv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionField" destination="6Ve-5Y-Sw0" id="fZJ-Gz-DyY"/>
+                        <outlet property="photoView" destination="pMh-OL-Pet" id="89p-2c-SPe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Wp-XH-TsL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hcl-Gk-QkK">
+                    <connections>
+                        <action selector="handleTap:" destination="HkY-3N-KJu" id="3Xx-cY-HE2"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2720.289855072464" y="883.92857142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iUD-16-igp">
@@ -104,5 +162,27 @@
             </objects>
             <point key="canvasLocation" x="900.00000000000011" y="-93.080357142857139"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ngo-jw-fjN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hef-21-iEc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="frW-4R-EQW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HkY-3N-KJu" kind="relationship" relationship="rootViewController" id="xTc-kd-8L7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crA-nT-0n9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1808.6956521739132" y="883.92857142857144"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="image_placeholder" width="375" height="375"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
+    </resources>
 </document>
