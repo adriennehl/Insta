@@ -67,7 +67,7 @@
         <!--Feed View Controller-->
         <scene sceneID="5mi-zz-iFM">
             <objects>
-                <viewController id="ctZ-b3-dwX" customClass="FeedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ctZ-b3-dwX" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cvt-Sl-7ow">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
         <!--Navigation Controller-->
         <scene sceneID="iUD-16-igp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="qGa-Gx-obx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InstaNavigationController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qGa-Gx-obx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="io8-mP-y7u">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
