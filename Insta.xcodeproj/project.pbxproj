@@ -12,6 +12,7 @@
 		7B4F4F6D4AE1DB1DCB8AE693 /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC30BF497231B110C8C49FFB /* Pods_InstaTests.framework */; };
 		C807DD4F24B520470020137E /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = C807DD4E24B520470020137E /* Post.m */; };
 		C807DD5224B52A960020137E /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C807DD5124B52A960020137E /* PostCell.m */; };
+		C807DD5824B541A20020137E /* PostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C807DD5724B541A20020137E /* PostDetailViewController.m */; };
 		C868F67224B3C06500B72ED8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F67124B3C06500B72ED8 /* AppDelegate.m */; };
 		C868F67524B3C06500B72ED8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F67424B3C06500B72ED8 /* SceneDelegate.m */; };
 		C868F67B24B3C06500B72ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C868F67924B3C06500B72ED8 /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		C807DD4E24B520470020137E /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		C807DD5024B52A960020137E /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		C807DD5124B52A960020137E /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		C807DD5624B541A20020137E /* PostDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailViewController.h; sourceTree = "<group>"; };
+		C807DD5724B541A20020137E /* PostDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailViewController.m; sourceTree = "<group>"; };
 		C868F66D24B3C06500B72ED8 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C868F67024B3C06500B72ED8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C868F67124B3C06500B72ED8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 				C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */,
 				C868F6B024B42A9D00B72ED8 /* CreatePostViewController.h */,
 				C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */,
+				C807DD5624B541A20020137E /* PostDetailViewController.h */,
+				C807DD5724B541A20020137E /* PostDetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C807DD5824B541A20020137E /* PostDetailViewController.m in Sources */,
 				C868F6B224B42A9D00B72ED8 /* CreatePostViewController.m in Sources */,
 				C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */,
 				C868F6AF24B41FFD00B72ED8 /* FeedViewController.m in Sources */,

@@ -9,6 +9,8 @@
 #import "FeedViewController.h"
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
+#import "PostDetailViewController.h"
+#import "CreatePostViewController.h"
 #import "SceneDelegate.h"
 #import "PostCell.h"
 #import "Post.h"
@@ -36,6 +38,10 @@
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     // add refresh to table view
     [self.postsTableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self fetchPosts];
 }
 
 // fetch posts method
@@ -86,14 +92,24 @@
     }];
 }
 
-/*
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+     
+     if([sender isKindOfClass:[PostCell class]]) {
+         PostCell *tappedCell = sender;
+         // get indexPath of tapped cell
+         NSIndexPath *indexPath = [self.postsTableView indexPathForCell:tappedCell];
+         // get post of tapped cell
+         Post *post = self.posts[indexPath.row];
+         
+         // set PostDetailViewController post
+         PostDetailViewController *detailsViewController = [segue destinationViewController];
+         detailsViewController.post = post;
+     }
  }
- */
 
 @end
