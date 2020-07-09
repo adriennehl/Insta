@@ -26,6 +26,8 @@
 		C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6AB24B4152000B72ED8 /* LoginViewController.m */; };
 		C868F6AF24B41FFD00B72ED8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */; };
 		C868F6B224B42A9D00B72ED8 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */; };
+		C8DADDC324B6750F008FD4A5 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DADDC224B6750F008FD4A5 /* ProfileViewController.m */; };
+		C8DADDC624B67639008FD4A5 /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DADDC524B67639008FD4A5 /* PostCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		C868F6B024B42A9D00B72ED8 /* CreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePostViewController.h; sourceTree = "<group>"; };
 		C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatePostViewController.m; sourceTree = "<group>"; };
+		C8DADDC124B6750F008FD4A5 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		C8DADDC224B6750F008FD4A5 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		C8DADDC424B67639008FD4A5 /* PostCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCollectionViewCell.h; sourceTree = "<group>"; };
+		C8DADDC524B67639008FD4A5 /* PostCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCollectionViewCell.m; sourceTree = "<group>"; };
 		EC30BF497231B110C8C49FFB /* Pods_InstaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC743AB7529147FEB40D7E2 /* Pods-Insta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.release.xcconfig"; path = "Target Support Files/Pods-Insta/Pods-Insta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +180,8 @@
 				C868F67C24B3C06600B72ED8 /* Assets.xcassets */,
 				C868F67E24B3C06600B72ED8 /* LaunchScreen.storyboard */,
 				C868F68124B3C06600B72ED8 /* Info.plist */,
+				C8DADDC424B67639008FD4A5 /* PostCollectionViewCell.h */,
+				C8DADDC524B67639008FD4A5 /* PostCollectionViewCell.m */,
 				C868F68224B3C06600B72ED8 /* main.m */,
 				C807DD4D24B520470020137E /* Post.h */,
 				C807DD4E24B520470020137E /* Post.m */,
@@ -212,6 +220,8 @@
 				C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */,
 				C807DD5624B541A20020137E /* PostDetailViewController.h */,
 				C807DD5724B541A20020137E /* PostDetailViewController.m */,
+				C8DADDC124B6750F008FD4A5 /* ProfileViewController.h */,
+				C8DADDC224B6750F008FD4A5 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -457,9 +467,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C807DD5824B541A20020137E /* PostDetailViewController.m in Sources */,
+				C8DADDC624B67639008FD4A5 /* PostCollectionViewCell.m in Sources */,
 				C868F6B224B42A9D00B72ED8 /* CreatePostViewController.m in Sources */,
 				C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */,
 				C868F6AF24B41FFD00B72ED8 /* FeedViewController.m in Sources */,
+				C8DADDC324B6750F008FD4A5 /* ProfileViewController.m in Sources */,
 				C807DD5224B52A960020137E /* PostCell.m in Sources */,
 				C868F67224B3C06500B72ED8 /* AppDelegate.m in Sources */,
 				C868F68324B3C06600B72ED8 /* main.m in Sources */,

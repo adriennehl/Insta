@@ -14,6 +14,7 @@
 #import "SceneDelegate.h"
 #import "PostCell.h"
 #import "Post.h"
+#import "ProfileViewController.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *postsTableView;
