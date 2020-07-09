@@ -12,7 +12,7 @@
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *postCollectionView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 
@@ -26,9 +26,10 @@
     
     self.postCollectionView.delegate = self;
     self.postCollectionView.dataSource = self;
+    self.postCollectionView.alwaysBounceVertical = YES;
     
     // call fetchPosts on refresh
-    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self.postCollectionView action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     // add refresh to collection view
     [self.postCollectionView insertSubview:self.refreshControl atIndex:0];
     
@@ -36,11 +37,24 @@
     if (self.user == nil) {
         self.user = [PFUser currentUser];
     }
-    self.title = self.user[@"username"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self fetchPosts];
+    [self setUserData];
+}
+
+- (void)setUserData {
+    self.title = self.user[@"username"];
+    if(self.user[@"name"]){
+        self.nameLabel.text = self.user[@"name"];
+    }
+    if(self.user[@"biography"]){
+        self.bioLabel.text = self.user[@"biography"];
+    }
+    if(self.user[@"profileImage"]){
+        self.profileImageView.file = self.user[@"image"];
+    }
 }
 
 // fetch user posts method
