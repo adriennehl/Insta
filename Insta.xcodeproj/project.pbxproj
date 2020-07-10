@@ -183,8 +183,6 @@
 				C868F67C24B3C06600B72ED8 /* Assets.xcassets */,
 				C868F67E24B3C06600B72ED8 /* LaunchScreen.storyboard */,
 				C868F68124B3C06600B72ED8 /* Info.plist */,
-				C8DADDC424B67639008FD4A5 /* PostCollectionViewCell.h */,
-				C8DADDC524B67639008FD4A5 /* PostCollectionViewCell.m */,
 				C868F68224B3C06600B72ED8 /* main.m */,
 				C87B88F524B7EDDB00E0E58E /* Models */,
 			);
@@ -229,6 +227,8 @@
 		C87B88F524B7EDDB00E0E58E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C8DADDC424B67639008FD4A5 /* PostCollectionViewCell.h */,
+				C8DADDC524B67639008FD4A5 /* PostCollectionViewCell.m */,
 				C807DD4D24B520470020137E /* Post.h */,
 				C807DD4E24B520470020137E /* Post.m */,
 				C807DD5024B52A960020137E /* PostCell.h */,

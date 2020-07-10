@@ -17,7 +17,7 @@
 #import "ProfileViewController.h"
 #import "InfiniteScrollActivityView.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PostCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *postsTableView;
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
@@ -103,6 +103,10 @@
     }];
 }
 
+- (void)postCell:(PostCell *)postCell didTap:(PFUser *)user{
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.posts.count;
 }
@@ -116,6 +120,7 @@
     Post *post = self.posts[indexPath.section];
     
     cell = [cell reloadPost:cell post:post];
+    cell.delegate = self;
     return cell;
 }
 
@@ -127,13 +132,14 @@
         aspectRatio = post.aspectRatio;
     }
     
-    return width * aspectRatio + 70;
+    return width * aspectRatio + 110;
 }
 
 // set header text
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.HeaderViewIdentifier];
     header.textLabel.text = self.posts[section][@"author"][@"username"];
+    header.textLabel.textColor = UIColor.blackColor;
     return header;
 }
 
@@ -142,7 +148,6 @@
     UITableViewHeaderFooterView *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.FooterViewIdentifier];
     Post *post = self.posts[section];
     footer.textLabel.text = [Post dateToString:post.createdAt];
-    footer.textLabel.textColor = UIColor.grayColor;
     footer.tintColor = UIColor.whiteColor;
     // set separator inset
     return footer;
@@ -235,6 +240,10 @@
          // set PostDetailViewController post
          PostDetailViewController *detailsViewController = [segue destinationViewController];
          detailsViewController.post = post;
+     }
+     else if ([segue.identifier isEqualToString:@"profileSegue"]){
+         ProfileViewController *profileViewController = [segue destinationViewController];
+         profileViewController.user = sender;
      }
  }
 

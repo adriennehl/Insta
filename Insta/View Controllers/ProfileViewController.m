@@ -9,14 +9,16 @@
 #import "ProfileViewController.h"
 #import "PostCollectionViewCell.h"
 #import "PostDetailViewController.h"
+#import "Post.h"
 
-@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *postCollectionView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (strong, nonatomic) NSArray *userPosts;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 
 @end
 
@@ -62,7 +64,7 @@
         self.bioLabel.text = self.user[@"biography"];
     }
     if(self.user[@"profileImage"]){
-        self.profileImageView.file = self.user[@"image"];
+        self.profileImageView.file = self.user[@"profileImage"];
     }
 }
 
@@ -73,7 +75,7 @@
     [query includeKey:@"author"];
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"author" equalTo:self.user];
-
+    
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
@@ -97,23 +99,87 @@
     return self.userPosts.count;
 }
 
-#pragma mark - Navigation
+// resize image
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
+// implement delegate method to take a picture
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+    // get the image captured by UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    CGSize size = CGSizeMake(300, 300);
+    UIImage *resizedImage = [self resizeImage:originalImage withSize:size];
+    
+    // set image
+    [self.profileImageView setImage:resizedImage];
+    
+    // Dismiss UIImagePickerController and return to original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)saveProfilePhoto {
+    PFFileObject *profileImage = [Post getPFFileFromImage:self.profileImageView.image];
+    self.user[@"profileImage"] = profileImage;
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error!= nil) {
+            NSLog(@"Error saving file");
+        }
+        else {
+            NSLog(@"Profile saved successfully!");
+            self.navigationItem.rightBarButtonItem = nil;
+        }
+    }];
+}
+- (IBAction)handleTap:(id)sender {
+    NSLog(@"Tapped!");
+    // only show image picker for currentUser
+    if ([self.user.username isEqualToString:[PFUser currentUser].username]) {
+        // instantiate UIImagePickerController
+        UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+        imagePickerVC.delegate = self;
+        imagePickerVC.allowsEditing = YES;
+        // check that camera is supported on device
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        else {
+            NSLog(@"Camera 🚫 available so we will use photo library instead");
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
+        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveProfilePhoto)];
+        self.navigationItem.rightBarButtonItem = saveButton;
+    }
+}
+
+
+#pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([sender isKindOfClass:[PostCollectionViewCell class]]) {
-           PostCollectionViewCell *tappedCell = sender;
-           // get indexPath of tapped cell
-           NSIndexPath *indexPath = [self.postCollectionView indexPathForCell:tappedCell];
-           // get post of tapped cell
-           Post *post = self.userPosts[indexPath.row];
-           
-           // set PostDetailViewController post
-           PostDetailViewController *detailsViewController = [segue destinationViewController];
-           detailsViewController.post = post;
-       }
+        PostCollectionViewCell *tappedCell = sender;
+        // get indexPath of tapped cell
+        NSIndexPath *indexPath = [self.postCollectionView indexPathForCell:tappedCell];
+        // get post of tapped cell
+        Post *post = self.userPosts[indexPath.row];
+        
+        // set PostDetailViewController post
+        PostDetailViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+    }
 }
 
 @end

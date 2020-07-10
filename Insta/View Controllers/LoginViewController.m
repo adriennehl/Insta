@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "Post.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -41,6 +42,7 @@
         // set user properties
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
+        newUser[@"profileImage"] = [Post getPFFileFromImage:[UIImage imageNamed:@"image_placeholder"]];
         
         // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {

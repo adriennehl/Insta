@@ -23,5 +23,6 @@
 
 + (NSString *)dateToString: (NSDate *)createdAt;
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withAspectRatio: (float)aspectRatio withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (PFFileObject *_Nullable)getPFFileFromImage: (UIImage * _Nullable)image;
 
 @end
