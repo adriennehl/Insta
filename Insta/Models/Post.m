@@ -22,6 +22,17 @@
     return @"Post";
 }
 
++ (NSString *)dateToString: (NSDate *)createdAt {
+    // format and set createdAtString
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    // configure output format
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    //Convert Date to String
+    NSString *createdAtString = [formatter stringFromDate:createdAt];
+    return createdAtString;
+}
+
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withAspectRatio: (float) aspectRatio withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Post *newPost = [Post new];

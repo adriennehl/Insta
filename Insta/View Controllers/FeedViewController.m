@@ -23,6 +23,8 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) BOOL isMoreDataLoading;
 @property (strong, nonatomic) InfiniteScrollActivityView* loadingMoreView;
+@property (strong, nonatomic) NSString *HeaderViewIdentifier;
+@property (strong, nonatomic) NSString *FooterViewIdentifier;
 
 @end
 
@@ -41,9 +43,16 @@
     // add refresh to table view
     [self.postsTableView insertSubview:self.refreshControl atIndex:0];
     
-    self.posts = [[NSMutableArray alloc]init];
-    
+    // set up activity indicator
     [self setUpIndicator];
+    //set up table view header and footer view
+    self.HeaderViewIdentifier = @"TableViewHeaderView";
+    self.FooterViewIdentifier = @"TableViewFooterView";
+    [self.postsTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:self.HeaderViewIdentifier];
+     [self.postsTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:self.FooterViewIdentifier];
+    
+    // remove seperator inset
+    self.postsTableView.separatorInset = UIEdgeInsetsZero;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -88,35 +97,67 @@
             [self.postsTableView reloadData];
             // update loading flag
             self.isMoreDataLoading = false;
+            [self removedContentInset];
             // Stop the loading indicator
             [self.loadingMoreView stopAnimating];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
-        [self.refreshControl endRefreshing];
     }];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.posts.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    Post *post = self.posts[indexPath.row];
+    Post *post = self.posts[indexPath.section];
     
     cell = [cell reloadPost:cell post:post];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Post *post = self.posts[indexPath.row];
+    Post *post = self.posts[indexPath.section];
     float width = self.postsTableView.frame.size.width;
     float aspectRatio = 1;
     if (post.aspectRatio) {
         aspectRatio = post.aspectRatio;
     }
     return width * aspectRatio;
+}
+
+// set header text
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.HeaderViewIdentifier];
+    header.textLabel.text = self.posts[section][@"author"][@"username"];
+    return header;
+}
+
+// set footer text
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.FooterViewIdentifier];
+    Post *post = self.posts[section];
+    footer.textLabel.text = [Post dateToString:post.createdAt];
+    footer.textLabel.textColor = UIColor.grayColor;
+    footer.tintColor = UIColor.whiteColor;
+    // set separator inset
+    return footer;
+}
+
+// set header height
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+//set footer height
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 30;
 }
 
 // handle scrolling
@@ -129,6 +170,7 @@
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.postsTableView.isDragging) {
             self.isMoreDataLoading = true;
+            [self addContentInset];
             
             // Update position of loadingMoreView, and start loading indicator
                        CGRect frame = CGRectMake(0, self.postsTableView.contentSize.height, self.postsTableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
@@ -162,12 +204,20 @@
     self.loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
     self.loadingMoreView.hidden = true;
     [self.postsTableView addSubview:self.loadingMoreView];
-    
+}
+
+- (void)addContentInset {
     // add insets to show loading indicator at bottom
     UIEdgeInsets insets = self.postsTableView.contentInset;
     insets.bottom += InfiniteScrollActivityView.defaultHeight;
     self.postsTableView.contentInset = insets;
-    self.postsTableView.separatorInset = UIEdgeInsetsZero;
+}
+
+- (void)removedContentInset {
+    // remove inset when not loading
+    UIEdgeInsets insets = self.postsTableView.contentInset;
+    insets.bottom -= InfiniteScrollActivityView.defaultHeight;
+    self.postsTableView.contentInset = insets;
 }
 
  #pragma mark - Navigation
@@ -182,7 +232,7 @@
          // get indexPath of tapped cell
          NSIndexPath *indexPath = [self.postsTableView indexPathForCell:tappedCell];
          // get post of tapped cell
-         Post *post = self.posts[indexPath.row];
+         Post *post = self.posts[indexPath.section];
          
          // set PostDetailViewController post
          PostDetailViewController *detailsViewController = [segue destinationViewController];

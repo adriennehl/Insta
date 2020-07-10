@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSNumber *commentCount;
 @property (nonatomic) float aspectRatio;
 
++ (NSString *)dateToString: (NSDate *)createdAt;
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withAspectRatio: (float)aspectRatio withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end

@@ -28,15 +28,7 @@
     self.captionLabel.text = self.post[@"caption"];
     self.user = self.post[@"author"];
     self.usernameLabel.text = self.user[@"username"];
-    NSDate *createdAt = self.post.createdAt;
-    // format and set createdAtString
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    // configure output format
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
-    //Convert Date to String
-    NSString *createdAtString = [formatter stringFromDate:createdAt];
-    self.timestampLabel.text = createdAtString;
+    self.timestampLabel.text = [Post dateToString:self.post.createdAt];
 }
 
 /*
