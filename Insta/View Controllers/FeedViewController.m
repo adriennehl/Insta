@@ -15,11 +15,15 @@
 #import "PostCell.h"
 #import "Post.h"
 #import "ProfileViewController.h"
+#import "InfiniteScrollActivityView.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *postsTableView;
-@property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) NSMutableArray *posts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) BOOL isMoreDataLoading;
+@property (strong, nonatomic) InfiniteScrollActivityView* loadingMoreView;
+
 @end
 
 @implementation FeedViewController
@@ -30,15 +34,16 @@
     self.postsTableView.delegate = self;
     self.postsTableView.dataSource = self;
     
-    // fetch tweets
-    [self fetchPosts];
-    
     // create an instance of UIRefreshControl
        self.refreshControl = [[UIRefreshControl alloc] init];
     // call fetchPosts on refresh
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     // add refresh to table view
     [self.postsTableView insertSubview:self.refreshControl atIndex:0];
+    
+    self.posts = [[NSMutableArray alloc]init];
+    
+    [self setUpIndicator];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -49,15 +54,42 @@
 - (void) fetchPosts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 20;
     [query includeKey:@"author"];
     [query orderByDescending:@"createdAt"];
+    query.limit = 20;
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            self.posts = posts;
+            // save posts and reload table
+            self.posts = (NSMutableArray *)posts;
             [self.postsTableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
+
+// fetch next posts method
+- (void) fetchNextPosts {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query includeKey:@"author"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 20;
+    query.skip = self.posts.count;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // add posts to array and reload table
+            [self.posts addObjectsFromArray:posts];
+            [self.postsTableView reloadData];
+            // update loading flag
+            self.isMoreDataLoading = false;
+            // Stop the loading indicator
+            [self.loadingMoreView stopAnimating];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -70,13 +102,43 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.posts[indexPath.row];
     
     cell = [cell reloadPost:cell post:post];
-    
     return cell;
-    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Post *post = self.posts[indexPath.row];
+    float width = self.postsTableView.frame.size.width;
+    float aspectRatio = 1;
+    if (post.aspectRatio) {
+        aspectRatio = post.aspectRatio;
+    }
+    return width * aspectRatio;
+}
+
+// handle scrolling
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.postsTableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.postsTableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.postsTableView.isDragging) {
+            self.isMoreDataLoading = true;
+            
+            // Update position of loadingMoreView, and start loading indicator
+                       CGRect frame = CGRectMake(0, self.postsTableView.contentSize.height, self.postsTableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            self.loadingMoreView.frame = frame;
+            [self.loadingMoreView startAnimating];
+            
+            // load data
+            [self fetchNextPosts];
+        }
+    }
 }
 
 // user can logout
@@ -91,6 +153,21 @@
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
     }];
+}
+
+// Set up Infinite Scroll loading indicator
+- (void)setUpIndicator {
+    // create subview with frame
+    CGRect frame = CGRectMake(0, self.postsTableView.contentSize.height, self.postsTableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    self.loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    self.loadingMoreView.hidden = true;
+    [self.postsTableView addSubview:self.loadingMoreView];
+    
+    // add insets to show loading indicator at bottom
+    UIEdgeInsets insets = self.postsTableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.postsTableView.contentInset = insets;
+    self.postsTableView.separatorInset = UIEdgeInsetsZero;
 }
 
  #pragma mark - Navigation

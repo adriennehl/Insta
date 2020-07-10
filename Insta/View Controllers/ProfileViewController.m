@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "PostCollectionViewCell.h"
+#import "PostDetailViewController.h"
 
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *postCollectionView;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
+@property (strong, nonatomic) NSArray *userPosts;
 
 @end
 
@@ -37,11 +39,18 @@
     if (self.user == nil) {
         self.user = [PFUser currentUser];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
+    
     [self fetchPosts];
     [self setUserData];
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*) self.postCollectionView.collectionViewLayout;
+    
+    layout.minimumInteritemSpacing = 5;
+    layout.minimumLineSpacing = 5;
+    
+    CGFloat postersPerLine = 3;
+    CGFloat itemWidth = (self.postCollectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
+    CGFloat itemHeight = itemWidth * 1.5;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
 - (void)setUserData {
@@ -61,7 +70,6 @@
 - (void) fetchPosts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 20;
     [query includeKey:@"author"];
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"author" equalTo:self.user];
@@ -69,7 +77,7 @@
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            self.posts = posts;
+            self.userPosts = posts;
             [self.postCollectionView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -80,23 +88,32 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PostCollectionViewCell *postCell= [collectionView dequeueReusableCellWithReuseIdentifier:@"PostCollectionCell" forIndexPath:indexPath];
-    Post *post = self.posts[indexPath.row];
+    Post *post = self.userPosts[indexPath.row];
     postCell = [postCell setCell:post];
     return postCell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.posts.count;
+    return self.userPosts.count;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([sender isKindOfClass:[PostCollectionViewCell class]]) {
+           PostCollectionViewCell *tappedCell = sender;
+           // get indexPath of tapped cell
+           NSIndexPath *indexPath = [self.postCollectionView indexPathForCell:tappedCell];
+           // get post of tapped cell
+           Post *post = self.userPosts[indexPath.row];
+           
+           // set PostDetailViewController post
+           PostDetailViewController *detailsViewController = [segue destinationViewController];
+           detailsViewController.post = post;
+       }
 }
-*/
 
 @end

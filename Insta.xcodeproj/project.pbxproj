@@ -26,6 +26,7 @@
 		C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6AB24B4152000B72ED8 /* LoginViewController.m */; };
 		C868F6AF24B41FFD00B72ED8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */; };
 		C868F6B224B42A9D00B72ED8 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */; };
+		C87B88F824B7EE0900E0E58E /* InfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = C87B88F724B7EE0900E0E58E /* InfiniteScrollActivityView.m */; };
 		C8DADDC324B6750F008FD4A5 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DADDC224B6750F008FD4A5 /* ProfileViewController.m */; };
 		C8DADDC624B67639008FD4A5 /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DADDC524B67639008FD4A5 /* PostCollectionViewCell.m */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,8 @@
 		C868F6AE24B41FFD00B72ED8 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		C868F6B024B42A9D00B72ED8 /* CreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePostViewController.h; sourceTree = "<group>"; };
 		C868F6B124B42A9D00B72ED8 /* CreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatePostViewController.m; sourceTree = "<group>"; };
+		C87B88F624B7EE0900E0E58E /* InfiniteScrollActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollActivityView.h; sourceTree = "<group>"; };
+		C87B88F724B7EE0900E0E58E /* InfiniteScrollActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollActivityView.m; sourceTree = "<group>"; };
 		C8DADDC124B6750F008FD4A5 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		C8DADDC224B6750F008FD4A5 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		C8DADDC424B67639008FD4A5 /* PostCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCollectionViewCell.h; sourceTree = "<group>"; };
@@ -183,10 +186,7 @@
 				C8DADDC424B67639008FD4A5 /* PostCollectionViewCell.h */,
 				C8DADDC524B67639008FD4A5 /* PostCollectionViewCell.m */,
 				C868F68224B3C06600B72ED8 /* main.m */,
-				C807DD4D24B520470020137E /* Post.h */,
-				C807DD4E24B520470020137E /* Post.m */,
-				C807DD5024B52A960020137E /* PostCell.h */,
-				C807DD5124B52A960020137E /* PostCell.m */,
+				C87B88F524B7EDDB00E0E58E /* Models */,
 			);
 			path = Insta;
 			sourceTree = "<group>";
@@ -224,6 +224,19 @@
 				C8DADDC224B6750F008FD4A5 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C87B88F524B7EDDB00E0E58E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C807DD4D24B520470020137E /* Post.h */,
+				C807DD4E24B520470020137E /* Post.m */,
+				C807DD5024B52A960020137E /* PostCell.h */,
+				C807DD5124B52A960020137E /* PostCell.m */,
+				C87B88F624B7EE0900E0E58E /* InfiniteScrollActivityView.h */,
+				C87B88F724B7EE0900E0E58E /* InfiniteScrollActivityView.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,6 +483,7 @@
 				C8DADDC624B67639008FD4A5 /* PostCollectionViewCell.m in Sources */,
 				C868F6B224B42A9D00B72ED8 /* CreatePostViewController.m in Sources */,
 				C868F6AC24B4152000B72ED8 /* LoginViewController.m in Sources */,
+				C87B88F824B7EE0900E0E58E /* InfiniteScrollActivityView.m in Sources */,
 				C868F6AF24B41FFD00B72ED8 /* FeedViewController.m in Sources */,
 				C8DADDC324B6750F008FD4A5 /* ProfileViewController.m in Sources */,
 				C807DD5224B52A960020137E /* PostCell.m in Sources */,

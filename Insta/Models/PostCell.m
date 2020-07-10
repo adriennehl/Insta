@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.layoutMargins = UIEdgeInsetsZero;
+    self.preservesSuperviewLayoutMargins = false;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,10 +27,10 @@
     _post = post;
     self.postView.file = post[@"image"];
     [self.postView loadInBackground];
-    
     self.captionLabel.text = post[@"caption"];
     self.user = post[@"author"];
     self.usernameLabel.text = self.user[@"username"];
     return self;
 }
+
 @end

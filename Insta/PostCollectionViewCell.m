@@ -13,6 +13,8 @@
 - (PostCollectionViewCell *)setCell:(Post *)post {
     self.post = post;
     self.postView.file = self.post[@"image"];
+    [self.postView loadInBackground];
     return self;
 }
+
 @end

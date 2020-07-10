@@ -12,6 +12,7 @@
 @interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *captionField;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@property (nonatomic) float aspectRatio;
 @end
 
 @implementation CreatePostViewController
@@ -26,8 +27,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
     // get the image captured by UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImageView *editedImage = info[UIImagePickerControllerEditedImage];
-    CGSize size = CGSizeMake(300, 300);
+    self.aspectRatio = originalImage.size.height/originalImage.size.width;
+    CGSize size = CGSizeMake(300, 300*self.aspectRatio);
     UIImage *resizedImage = [self resizeImage:originalImage withSize:size];
     
     // set image
@@ -71,7 +72,7 @@
 }
 
 - (IBAction)onSave:(id)sender {
-    [Post postUserImage:self.photoView.image withCaption:self.captionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [Post postUserImage:self.photoView.image withCaption:self.captionField.text withAspectRatio:self.aspectRatio withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"Posted successfully!");
             

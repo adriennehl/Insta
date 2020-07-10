@@ -72,7 +72,6 @@
         <!--Username-->
         <scene sceneID="hs5-hZ-rr1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="afQ-XP-ePg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="uEj-Di-Rr9" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CuA-1o-2R6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -114,24 +113,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zt1-pp-QgK" customClass="PFImageView">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zt1-pp-QgK" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="175"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="125" id="GH6-Zr-TrB"/>
-                                                        <constraint firstAttribute="height" constant="175" id="ZzH-vp-wAx"/>
+                                                        <constraint firstAttribute="width" constant="125" id="SJA-qo-Olt"/>
+                                                        <constraint firstAttribute="height" constant="175" id="h8e-vn-qM2"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Zt1-pp-QgK" firstAttribute="leading" secondItem="Sdg-YP-37J" secondAttribute="leading" id="1Td-sF-1mT"/>
-                                                <constraint firstAttribute="trailing" secondItem="Zt1-pp-QgK" secondAttribute="trailing" id="ZNH-GH-rBs"/>
-                                                <constraint firstItem="Zt1-pp-QgK" firstAttribute="top" secondItem="Sdg-YP-37J" secondAttribute="top" id="fTr-Yy-YkT"/>
-                                                <constraint firstAttribute="bottom" secondItem="Zt1-pp-QgK" secondAttribute="bottom" constant="3" id="vHC-Nu-W4H"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zt1-pp-QgK" secondAttribute="bottom" id="0LA-lG-XCD"/>
+                                                <constraint firstItem="Zt1-pp-QgK" firstAttribute="top" secondItem="Sdg-YP-37J" secondAttribute="top" id="Aoh-om-wI9"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zt1-pp-QgK" secondAttribute="trailing" id="LXQ-3w-XzC"/>
+                                                <constraint firstItem="Zt1-pp-QgK" firstAttribute="leading" secondItem="Sdg-YP-37J" secondAttribute="leading" id="uYI-wu-wKR"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="125" height="175"/>
                                         <connections>
                                             <outlet property="postView" destination="Zt1-pp-QgK" id="EHl-v9-EEi"/>
+                                            <segue destination="Ml9-ag-kns" kind="show" id="JGg-lJ-Tar"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -139,16 +139,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="VnY-lr-wrq" firstAttribute="leading" secondItem="dyH-QX-N6U" secondAttribute="leading" id="5AC-Xd-Kao"/>
+                            <constraint firstItem="VnY-lr-wrq" firstAttribute="trailing" secondItem="dyH-QX-N6U" secondAttribute="trailing" id="6Mr-Ab-M2p"/>
                             <constraint firstItem="ht0-UY-7qD" firstAttribute="leading" secondItem="dyH-QX-N6U" secondAttribute="leading" constant="11" id="6Yq-Rf-Ckn"/>
+                            <constraint firstItem="VnY-lr-wrq" firstAttribute="top" secondItem="pAV-m7-cJE" secondAttribute="bottom" constant="8" id="9vq-fd-1df"/>
+                            <constraint firstItem="VnY-lr-wrq" firstAttribute="bottom" secondItem="dyH-QX-N6U" secondAttribute="bottom" id="AIC-Km-dbd"/>
                             <constraint firstItem="ht0-UY-7qD" firstAttribute="top" secondItem="MTB-ab-qxP" secondAttribute="bottom" constant="8" id="I7M-KX-MKo"/>
-                            <constraint firstItem="VnY-lr-wrq" firstAttribute="top" secondItem="pAV-m7-cJE" secondAttribute="bottom" constant="8" id="IMf-3s-Mrj"/>
                             <constraint firstItem="dyH-QX-N6U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pAV-m7-cJE" secondAttribute="trailing" constant="11" id="JTy-1q-djM"/>
-                            <constraint firstItem="VnY-lr-wrq" firstAttribute="bottom" secondItem="dyH-QX-N6U" secondAttribute="bottom" id="YM6-QX-b6L"/>
                             <constraint firstItem="MTB-ab-qxP" firstAttribute="leading" secondItem="dyH-QX-N6U" secondAttribute="leading" constant="11" id="aGZ-b0-iVb"/>
                             <constraint firstItem="MTB-ab-qxP" firstAttribute="top" secondItem="dyH-QX-N6U" secondAttribute="top" constant="11" id="eEz-3w-gJ2"/>
-                            <constraint firstItem="VnY-lr-wrq" firstAttribute="trailing" secondItem="dyH-QX-N6U" secondAttribute="trailing" id="gWu-3D-7CT"/>
                             <constraint firstItem="pAV-m7-cJE" firstAttribute="leading" secondItem="dyH-QX-N6U" secondAttribute="leading" constant="11" id="hgV-mh-f7h"/>
+                            <constraint firstItem="VnY-lr-wrq" firstAttribute="leading" secondItem="dyH-QX-N6U" secondAttribute="leading" id="mwi-jE-gH4"/>
                             <constraint firstItem="pAV-m7-cJE" firstAttribute="top" secondItem="ht0-UY-7qD" secondAttribute="bottom" constant="8" id="oEa-nX-ycM"/>
                             <constraint firstItem="dyH-QX-N6U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ht0-UY-7qD" secondAttribute="trailing" constant="8" id="oKC-hV-pqT"/>
                         </constraints>
@@ -162,6 +162,7 @@
                         <outlet property="profileImageView" destination="MTB-ab-qxP" id="obc-ne-Zb2"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="afQ-XP-ePg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2704.347826086957" y="-798.21428571428567"/>
         </scene>
@@ -192,7 +193,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KIt-db-ile">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="487" id="uIq-eu-V4d" customClass="PostCell">
@@ -284,7 +285,7 @@
                         <constraints>
                             <constraint firstItem="KIt-db-ile" firstAttribute="leading" secondItem="dqC-qo-4NT" secondAttribute="leading" id="DGF-sH-m6W"/>
                             <constraint firstItem="KIt-db-ile" firstAttribute="trailing" secondItem="dqC-qo-4NT" secondAttribute="trailing" id="EJ1-vs-h6Y"/>
-                            <constraint firstAttribute="bottom" secondItem="KIt-db-ile" secondAttribute="bottom" id="PjB-yb-h4U"/>
+                            <constraint firstItem="dqC-qo-4NT" firstAttribute="bottom" secondItem="KIt-db-ile" secondAttribute="bottom" id="PjB-yb-h4U"/>
                             <constraint firstItem="KIt-db-ile" firstAttribute="top" secondItem="dqC-qo-4NT" secondAttribute="top" id="gdA-x5-dKT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dqC-qo-4NT"/>
@@ -389,11 +390,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDD-d2-0jK">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDD-d2-0jK">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6eL-FN-9ic">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="766"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eL-FN-9ic">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ID7-jp-wcN" customClass="PFImageView">
                                                 <rect key="frame" x="0.0" y="5" width="414" height="350"/>
@@ -426,6 +427,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6eL-FN-9ic" firstAttribute="leading" secondItem="HvN-8t-clL" secondAttribute="leading" id="5EV-cc-ngx"/>
+                                    <constraint firstItem="g4i-xa-wqk" firstAttribute="bottom" secondItem="6eL-FN-9ic" secondAttribute="bottom" constant="8" id="7la-D8-MZp"/>
                                     <constraint firstItem="6eL-FN-9ic" firstAttribute="width" secondItem="g4i-xa-wqk" secondAttribute="width" id="Cvd-8B-Uv2"/>
                                     <constraint firstItem="6eL-FN-9ic" firstAttribute="bottom" secondItem="HvN-8t-clL" secondAttribute="bottom" id="EKs-IM-EZG"/>
                                     <constraint firstItem="6eL-FN-9ic" firstAttribute="trailing" secondItem="HvN-8t-clL" secondAttribute="trailing" id="MzF-XM-3Yu"/>
@@ -438,7 +440,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="MyR-SP-YPc" firstAttribute="bottom" secondItem="RDD-d2-0jK" secondAttribute="bottom" id="0I0-7I-Xkg"/>
-                            <constraint firstItem="RDD-d2-0jK" firstAttribute="top" secondItem="MyR-SP-YPc" secondAttribute="top" id="E7a-04-mqQ"/>
+                            <constraint firstItem="RDD-d2-0jK" firstAttribute="top" secondItem="MyR-SP-YPc" secondAttribute="top" id="8xW-Dy-Chv"/>
                             <constraint firstItem="RDD-d2-0jK" firstAttribute="leading" secondItem="MyR-SP-YPc" secondAttribute="leading" id="tkD-Ws-wRd"/>
                             <constraint firstItem="RDD-d2-0jK" firstAttribute="trailing" secondItem="MyR-SP-YPc" secondAttribute="trailing" id="zy8-41-jBG"/>
                         </constraints>
@@ -494,6 +496,9 @@
             <point key="canvasLocation" x="1794.2028985507247" y="-798.21428571428567"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rGg-my-PfB"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Instagram_logo" width="100" height="35.666667938232422"/>
         <image name="bubble.right" catalog="system" width="128" height="110"/>
