@@ -50,9 +50,6 @@
     self.FooterViewIdentifier = @"TableViewFooterView";
     [self.postsTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:self.HeaderViewIdentifier];
      [self.postsTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:self.FooterViewIdentifier];
-    
-    // remove seperator inset
-    self.postsTableView.separatorInset = UIEdgeInsetsZero;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -129,7 +126,8 @@
     if (post.aspectRatio) {
         aspectRatio = post.aspectRatio;
     }
-    return width * aspectRatio;
+    
+    return width * aspectRatio + 70;
 }
 
 // set header text

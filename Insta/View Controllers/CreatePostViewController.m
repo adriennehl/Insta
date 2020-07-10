@@ -8,6 +8,7 @@
 
 #import "CreatePostViewController.h"
 #import "Post.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *captionField;
@@ -72,6 +73,9 @@
 }
 
 - (IBAction)onSave:(id)sender {
+    // show progress HUD
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [Post postUserImage:self.photoView.image withCaption:self.captionField.text withAspectRatio:self.aspectRatio withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"Posted successfully!");
@@ -87,6 +91,8 @@
                 // optional code for what happens after the alert controller has finished presenting
             }];
         }
+        // hide progress HUD
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
