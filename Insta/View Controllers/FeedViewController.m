@@ -132,7 +132,7 @@
         aspectRatio = post.aspectRatio;
     }
     
-    return width * aspectRatio + 110;
+    return width * aspectRatio + 20;
 }
 
 // set header text
