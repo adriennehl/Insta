@@ -43,6 +43,7 @@
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
         newUser[@"profileImage"] = [Post getPFFileFromImage:[UIImage imageNamed:@"image_placeholder"]];
+        newUser[@"likedPosts"] = [NSMutableArray array];
         
         // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
