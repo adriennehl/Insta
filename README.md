@@ -2,7 +2,7 @@
 
 **Insta** is a photo sharing app using Parse as its backend.
 
-Time spent: **10** hours spent in total
+Time spent: **23** hours spent in total
 
 ## User Stories
 
@@ -22,44 +22,48 @@ The following **optional** features are implemented:
 - [x] Style the login page to look like the real Instagram login page.
 - [x] Style the feed to look like the real Instagram feed.
 - [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
-- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
-- [ ] Show the username and creation time for each post
-- [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
+- [x] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+- [x] Show the username and creation time for each post
+- [x] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - User Profiles:
-  - [ ] Allow the logged in user to add a profile photo
-  - [ ] Display the profile photo with each post
-  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
-- [ ] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+  - [x] Allow the logged in user to add a profile photo
+  - [x] Display the profile photo with each post
+  - [x] Tapping on a post's username or profile photo goes to that user's profile page
+- [x] User can comment on a post and see all comments for each post in the post details screen.
+- [x] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
+* height of table view cells on feed adjust to size of the post's image
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. working with delegates
+2. working with models and saving data to the parse data base
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/N3t8FZv7Xy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src='http://g.recordit.co/vi9BBvdusK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [RecordIt](http://recordit.co/).
 
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- Parse
 
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Since this was my first time working with Parse, getting used to saving and loading data was challenging.
 
 ## License
 
